@@ -1,0 +1,9 @@
+﻿<Application x:Class="RepositoryExplorer.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:RepositoryExplorer"
+             StartupUri="View/MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary Source="/View/rsDicts/TabButtonResource.xaml" />
+    </Application.Resources>
+</Application>
