@@ -17,10 +17,6 @@ namespace RepositoryExplorer.ViewModel {
         public VM_FoldersPanel() {
             FP_Folders.NewFolderAdded += OnNewTabAdded;
             UpdateData();
-
-            FP_Folders.AddFolder(@"C:\Users\DeTosis\Desktop\c#");
-            FP_Folders.AddFolder(@"C:\Users\DeTosis\Desktop\c#wpf");
-            FP_Folders.AddFolder(@"C:\Users\DeTosis\Desktop\TheOnyxProject");
         }
 
         private void AddNewTab(string folderName) {

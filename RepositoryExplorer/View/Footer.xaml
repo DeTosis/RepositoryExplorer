@@ -15,16 +15,28 @@
     <Border Background="#131316">
         <Grid>
             <StackPanel 
-                HorizontalAlignment="Left" VerticalAlignment="Center">
+                HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
                 <Button 
+                    Command="{Binding C_AddFolder}"
+                    Style="{StaticResource ProjectButton}" 
                     BorderBrush="#C4BBAF"
                     FontSize="14"
                     Background="Transparent"
                     Content="Add Folder"
-                    Margin="4"
-                    Width="120"
+                    Width="auto"
+                    Padding="4"
+                    Margin="4,0,0,0"
                     Height="auto"/>
             </StackPanel>
+
+            <Button Command="{Binding C_OpenVS}"
+                Style="{StaticResource ProjectButton}" 
+                Width="32.5"
+                Height="32.5"
+                HorizontalAlignment="Right"
+                Margin="0,0,4 ,0">  
+                <Image Source="/res/img.ico/vsIconpng.png"/>
+            </Button>
         </Grid>
     </Border>
 </UserControl>

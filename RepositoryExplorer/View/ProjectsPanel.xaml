@@ -10,8 +10,15 @@
     <UserControl.DataContext>
         <data:VM_ProjectsPanel/>
     </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <Style TargetType="ScrollBar">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+        </Style>
+    </UserControl.Resources>
     
-    <Grid>
+    <Grid>  
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <ItemsControl x:Name="itemsControl" ItemsSource="{Binding Projects, UpdateSourceTrigger=PropertyChanged}">
                 <ItemsControl.ItemsPanel>

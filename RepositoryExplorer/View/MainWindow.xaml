@@ -12,6 +12,7 @@
         ResizeMode="NoResize"
         Background="#26252A"
         WindowStartupLocation="CenterScreen"
+        Title="Repository Explorer"
         Height="675" Width="1200">
 
 
@@ -52,7 +53,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Row="0" Grid.ColumnSpan="2">
-            <uc:Header/>
+            <uc:Header MouseDown="TitleBarGrid_MouseDown"/>
         </Grid>
 
         <Grid x:Name="FolderSellector" 

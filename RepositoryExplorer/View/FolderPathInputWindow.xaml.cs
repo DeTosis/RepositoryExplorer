@@ -1,12 +1,10 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using RepositoryExplorer.Model;
 
 namespace RepositoryExplorer.View {
-    public partial class MainWindow : Window {
-        public MainWindow() {
+    public partial class FolderPathInputWindow : Window {
+        public FolderPathInputWindow() {
             InitializeComponent();
-            FP_Folders.OnLoad();
         }
 
         private void TitleBarGrid_MouseDown(object sender, MouseButtonEventArgs e) {

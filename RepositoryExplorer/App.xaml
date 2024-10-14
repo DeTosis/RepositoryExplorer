@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:RepositoryExplorer"
              StartupUri="View/MainWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary Source="/View/rsDicts/TabButtonResource.xaml" />
+        <ResourceDictionary Source="/View/rsDicts/StyleSheet.xaml" />
     </Application.Resources>
 </Application>

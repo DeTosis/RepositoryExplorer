@@ -1,0 +1,81 @@
+﻿<Window x:Class="RepositoryExplorer.View.FolderPathInputWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RepositoryExplorer.View"
+        xmlns:data="clr-namespace:RepositoryExplorer.ViewModel"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="/res/fonts/#Feature Mono Regular"
+        Background="#413F45"
+        Title="Enter Folder Path" Height="180" Width="430">
+
+    <Window.DataContext>
+        <data:VM_FolderPathInputWindow/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" MouseDown="TitleBarGrid_MouseDown" Grid.ColumnSpan="3" Background="#131316">
+            
+        </Grid>
+        <Grid Grid.Row="4" MouseDown="TitleBarGrid_MouseDown" Grid.ColumnSpan="3" Background="#131316">
+
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="3">
+            <Label Content="Enter repositories folder path:"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   Foreground="#C4BBAF"
+                   FontSize="19"
+                   />
+        </Grid>
+        
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
+            <TextBox 
+                HorizontalContentAlignment="Center"
+                Background="Transparent" 
+                Foreground="#C4BBAF"
+                BorderThickness="1"
+                Text="{Binding TbTExt}"
+                Margin="10"
+                FontSize="18"/>
+        </Grid>
+
+        <Grid Grid.Row="3" Grid.Column="0">
+            <Button Style="{StaticResource ProjectButton}"
+                    Command="{Binding C_Submit}"
+                    Content="Submit"
+                    Height="30"
+                    Width="120"
+                    Background="#2A292E"
+                    />
+        </Grid>
+        
+        <Grid Grid.Row="3" Grid.Column="2">
+            <Button Style="{StaticResource ProjectButton}"
+                    Command="{Binding C_Cancel}"
+                    Content="Cancel"
+                    Height="30"
+                    Width="120"
+                    Background="#2A292E"
+                    />
+        </Grid>
+    </Grid>
+</Window>

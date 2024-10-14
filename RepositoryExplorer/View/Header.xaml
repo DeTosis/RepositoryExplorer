@@ -19,7 +19,10 @@
                 VerticalAlignment="Center"
                 Content="Repository Explorer"/>
             <Button 
+                Style="{StaticResource DeffaultButton}"
+                Command="{Binding CloseApp}"
                 Background="Transparent"
+                Foreground="#AD3A72"
                 Content="✕"
                 Margin="6"
                 Width="20"

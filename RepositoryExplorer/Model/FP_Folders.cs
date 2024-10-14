@@ -3,6 +3,15 @@ using RepositoryExplorer.Model.SolutionParser;
 
 namespace RepositoryExplorer.Model {
     public static class FP_Folders {
+
+        public static void OnLoad() {
+            List<string> folders = new SaveLoadSystem().LoadData();
+            if (folders == null) return;
+            foreach ( var i in folders) {
+                AddFolder(i);
+            }
+        }
+
         public static event EventHandler<string> NewFolderAdded;
         private static void OnNewFolderAdded(string newFolderPath) {
             EventHandler<string> handler = NewFolderAdded;
@@ -24,7 +33,14 @@ namespace RepositoryExplorer.Model {
 
             folders.Add(folderPath, dataUnits);
             OnNewFolderAdded(folderPath);
+            SaveData();
         }
+
+        private static void SaveData() {
+            List<string> paths = [.. folders.Keys];
+            new SaveLoadSystem().Save(paths);
+        }
+
 
         public static void NewTabSellected(string tabName) {
             foreach (var item in folders.Keys) {
