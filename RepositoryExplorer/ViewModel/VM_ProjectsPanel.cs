@@ -19,8 +19,8 @@ namespace RepositoryExplorer.ViewModel {
             Projects.Clear();
             for (int i = 0; i < data.Count(); i++) {
                 AddNewFolder(data[i]);
+                UpdateData();
             }
-            UpdateData();
         }
 
         private void AddNewFolder(DataUnit data) {

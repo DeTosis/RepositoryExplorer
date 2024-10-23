@@ -13,12 +13,42 @@
 
     <Border Background="#131316">
         <Grid>
-            <Label 
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <Label
+                Grid.Column="0"
                 FontSize="16"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
                 Content="Repository Explorer"/>
-            <Button 
+
+            <TextBox
+                x:Name="searchBar"
+                Margin="4"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                FontSize="16"
+                Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}"
+                Foreground="#C4BBAF"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                Grid.Column="1"
+                Height="auto"
+                Width="auto">
+                <TextBox.InputBindings>
+                    <MouseBinding 
+                        MouseAction="LeftDoubleClick"
+                        Command="{Binding C_ClearTextBox}"/>
+                </TextBox.InputBindings>
+            </TextBox>
+
+            <Button
+                Grid.Column="2"
                 Style="{StaticResource DeffaultButton}"
                 Command="{Binding CloseApp}"
                 Background="Transparent"

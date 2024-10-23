@@ -6,7 +6,7 @@ using RepositoryExplorer.View.utilControls;
 namespace RepositoryExplorer.ViewModel {
     public class VM_FoldersPanel : ViewModel_Base {
         public int rowsCount { get; set; }
-        public ObservableCollection<TabButton> tabs { get; set; } = new();
+        public ObservableCollection<TabButton> tabs { get; private set; } = new();
         
         private void UpdateData() {
             rowsCount = tabs.Count;
@@ -16,6 +16,7 @@ namespace RepositoryExplorer.ViewModel {
         
         public VM_FoldersPanel() {
             FP_Folders.NewFolderAdded += OnNewTabAdded;
+            FP_Folders.RemoveTab += OnTabRemoved;
             UpdateData();
         }
 
@@ -27,7 +28,18 @@ namespace RepositoryExplorer.ViewModel {
             tabs.Add(tab);
         }
 
+        private void OnTabRemoved(object? sender, string e) {
+            foreach (var tab in tabs.ToList()) {
+                VM_TabButton button_dataContext = tab.DataContext as VM_TabButton;
+                if (button_dataContext.FolderName == e) {
+                    tabs.Remove(tab);
+                    UpdateData();
+                }
+            }
+        }
+
         private void OnTabActive(object? sender, EventArgs e) {
+            UpdateData();
             VM_TabButton tab = (VM_TabButton)sender;
             foreach (TabButton button in tabs) {
                 VM_TabButton dataContext = button.DataContext as VM_TabButton;

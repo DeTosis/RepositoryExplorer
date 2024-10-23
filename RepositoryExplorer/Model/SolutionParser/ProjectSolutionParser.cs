@@ -10,8 +10,10 @@ namespace RepositoryExplorer.Model.SolutionParser {
         List<DataUnit> dataUnits = new List<DataUnit>();
         int basePathLen => fldr.Split(@"\").Count();
 
-        public List<DataUnit> GetAllSolutions() {
-            AssembleData();
+        public List<DataUnit> GetAllSolutions(string foldersNames = "") {
+            if (!string.IsNullOrEmpty(foldersNames)) {
+                AssembleData(foldersNames);
+            } else { AssembleData(); }
             return dataUnits;
         }
 
@@ -21,6 +23,15 @@ namespace RepositoryExplorer.Model.SolutionParser {
                 Query(dir);
             }
         }
+
+        private void AssembleData(string filter) {
+            string[] i = Directory.GetDirectories(fldr);
+            foreach (string dir in i) {
+                if (!dir.Split(@"\").Last().ToLower().Contains(filter.ToLower())) continue;
+                Query(dir);
+            }
+        }
+
         private void Query(string path) {
             foreach (var i in Directory.GetFiles(path)) {
                 if (i.EndsWith(".sln")) {

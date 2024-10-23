@@ -1,4 +1,5 @@
 ﻿using System.Windows.Media;
+using RepositoryExplorer.Model;
 using RepositoryExplorer.utils;
 
 namespace RepositoryExplorer.ViewModel {
@@ -7,7 +8,7 @@ namespace RepositoryExplorer.ViewModel {
         private string folderName;
         public string FolderName {
             get { return folderName; }
-            set { 
+            set {
                 folderName = value;
                 OnPropertyChanged();
             }
@@ -20,6 +21,7 @@ namespace RepositoryExplorer.ViewModel {
         public SolidColorBrush currentBg { get; private set; }
 
         public RelayCommand C_TabButtonClick => new RelayCommand(execute => TabButtonClick());
+        public RelayCommand C_RemoveFolder => new RelayCommand(execute => RemoveFolder());
 
         public VM_TabButton() {
             inactiveBG.Opacity = 0f;
@@ -32,9 +34,13 @@ namespace RepositoryExplorer.ViewModel {
         }
 
         private void TabButtonClick() {
-            isTabActive = !isTabActive;
+            isTabActive = true;
             UpdateData();
             OnNewTabActive();
+        }
+
+        private void RemoveFolder() {
+            FP_Folders.RemoveFolder(folderName);
         }
 
         public event EventHandler NewTabActive;
