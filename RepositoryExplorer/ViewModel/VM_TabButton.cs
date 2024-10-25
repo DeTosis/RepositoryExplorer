@@ -1,5 +1,6 @@
 ﻿using System.Windows.Media;
-using RepositoryExplorer.Model;
+using RepositoryExplorer.Model.DataStructure;
+using RepositoryExplorer.Model.Notifications;
 using RepositoryExplorer.utils;
 
 namespace RepositoryExplorer.ViewModel {
@@ -36,17 +37,17 @@ namespace RepositoryExplorer.ViewModel {
         private void TabButtonClick() {
             isTabActive = true;
             UpdateData();
-            OnNewTabActive();
+            FolderActionNotification.FolderSellectedEvent(this);
         }
 
         private void RemoveFolder() {
-            FP_Folders.RemoveFolder(folderName);
-        }
-
-        public event EventHandler NewTabActive;
-        protected virtual void OnNewTabActive() {
-            EventHandler handler = NewTabActive;
-            handler?.Invoke(this, EventArgs.Empty);
+            Folders folders = new();
+            foreach (var folder in folders.foldersPaths) {
+                if (folderName == folder.Split(@"\").Last()) {
+                    folders.RemoveFolder(folder);
+                    break;
+                }
+            }
         }
     }
 }

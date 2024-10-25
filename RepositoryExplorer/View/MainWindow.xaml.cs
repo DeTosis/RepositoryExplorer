@@ -6,7 +6,6 @@ namespace RepositoryExplorer.View {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
-            FP_Folders.OnLoad();
         }
 
         private void TitleBarGrid_MouseDown(object sender, MouseButtonEventArgs e) {

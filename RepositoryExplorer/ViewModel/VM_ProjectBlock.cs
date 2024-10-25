@@ -30,16 +30,9 @@ namespace RepositoryExplorer.ViewModel {
         public RelayCommand C_OpenDebug => new RelayCommand(execute => OpenDebug());
         public RelayCommand C_OpenRelease => new RelayCommand(execute => OpenRelease());
 
-
         private OpenDesiredFolder open = new();
-        private void OpenFolder() {
-            open.OpenFolder(FolderPath);
-        }
-        private void OpenDebug() { 
-            open.OpenFolder(DebugPath);
-        }
-        private void OpenRelease() {
-            open.OpenFolder(ReleasePath);
-        }
+        private void OpenFolder() => open.OpenFolder(FolderPath);
+        private void OpenDebug() => open.OpenFolder(DebugPath);
+        private void OpenRelease() => open.OpenFolder(ReleasePath);
     }
 }

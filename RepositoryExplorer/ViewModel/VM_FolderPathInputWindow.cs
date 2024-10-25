@@ -1,5 +1,5 @@
-﻿using System.IO;
-using System.Windows;
+﻿using System.Windows;
+using RepositoryExplorer.Model.DataStructure;
 using RepositoryExplorer.utils;
 
 namespace RepositoryExplorer.ViewModel {
@@ -10,7 +10,6 @@ namespace RepositoryExplorer.ViewModel {
         public RelayCommand C_Submit => new RelayCommand(execute => Submit());
         public RelayCommand C_Cancel => new RelayCommand(execute => Cancel());
 
-
         public string TbTExt {
             get { return tbText; }
             set {
@@ -20,20 +19,11 @@ namespace RepositoryExplorer.ViewModel {
         }
 
         private void Submit() {
-            if (Directory.Exists(TbTExt)) {
-                OnSubmitting();
-            }
+            new Folders().AddFolder(TbTExt);
             TbTExt = string.Empty;
+            Cancel();
         }
 
-        private void Cancel() {
-            thisW.Close();
-        }
-
-        public event EventHandler<string> Submitting;
-        protected virtual void OnSubmitting() {
-            EventHandler<string> handler = Submitting;
-            handler?.Invoke(this, TbTExt);
-        }
+        private void Cancel() => thisW.Close();
     }
 }

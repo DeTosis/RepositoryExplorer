@@ -23,8 +23,7 @@ namespace RepositoryExplorer.ViewModel {
             set { 
                 searchText = value;
                 OnPropertyChanged();
-                FP_Folders.activeFilter = searchText;
-                FP_Folders.Refresh();
+                FP_Folders.SetFilter(SearchText);
             }
         }
     }
