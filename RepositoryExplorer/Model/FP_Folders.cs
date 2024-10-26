@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using RepositoryExplorer.Model.DataStructure;
 
 namespace RepositoryExplorer.Model {
     public static class FP_Folders {
@@ -16,8 +15,6 @@ namespace RepositoryExplorer.Model {
 
         public static void SetActiveTab(string folderPath) {
             if (!Directory.Exists(folderPath)) return;
-            if (!new Folders().foldersPaths.Contains(folderPath)) return;
-
             activeFolderPath = folderPath.ToLower();
         }
     }

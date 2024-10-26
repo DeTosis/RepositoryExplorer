@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using RepositoryExplorer.Model;
 
 namespace RepositoryExplorer.View {
     public partial class MainWindow : Window {

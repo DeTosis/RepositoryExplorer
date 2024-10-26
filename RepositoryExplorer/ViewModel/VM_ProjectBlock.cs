@@ -1,9 +1,10 @@
-﻿using System.Windows;
+﻿using System.Windows.Media;
 using RepositoryExplorer.Model;
+using RepositoryExplorer.Model.DataStructure;
 using RepositoryExplorer.utils;
 
 namespace RepositoryExplorer.ViewModel {
-    public class VM_ProjectBlock : ViewModel_Base  {
+    public class VM_ProjectBlock : ViewModel_Base {
         public string FolderName { get; set; }
         public string FolderPath { get; set; }
         public string DebugPath { get; set; }
@@ -11,6 +12,7 @@ namespace RepositoryExplorer.ViewModel {
         public bool DebugExists { get; set; }
         public bool ReleaseExists { get; set; }
 
+        public bool isRescent { get; set; }
         private void UpdateData() {
             OnPropertyChanged("FolderName");
             OnPropertyChanged("FolderPath");
@@ -20,7 +22,18 @@ namespace RepositoryExplorer.ViewModel {
             OnPropertyChanged("ReleaseExists");
         }
 
+        private SolidColorBrush borderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#C4BBAF");
+        public SolidColorBrush BorderBrush {
+            get { return borderBrush; }
+            set {
+                borderBrush = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         public void INIT() {
+            if (isRescent) BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#496F5D");
             DebugExists = !string.IsNullOrEmpty(DebugPath);
             ReleaseExists = !string.IsNullOrEmpty(ReleasePath);
             UpdateData();
@@ -31,8 +44,23 @@ namespace RepositoryExplorer.ViewModel {
         public RelayCommand C_OpenRelease => new RelayCommand(execute => OpenRelease());
 
         private OpenDesiredFolder open = new();
-        private void OpenFolder() => open.OpenFolder(FolderPath);
-        private void OpenDebug() => open.OpenFolder(DebugPath);
-        private void OpenRelease() => open.OpenFolder(ReleasePath);
+        private void OpenFolder() {
+            open.OpenFolder(FolderPath);
+            AddFolderToRescent();
+        }
+
+        private void OpenDebug() {
+            open.OpenFolder(DebugPath);
+            AddFolderToRescent();
+        }
+
+        private void OpenRelease() {
+            open.OpenFolder(ReleasePath);
+            AddFolderToRescent();
+        }
+
+        private void AddFolderToRescent() {
+            new Folders().AddRescent(FolderPath);
+        }
     }
 }

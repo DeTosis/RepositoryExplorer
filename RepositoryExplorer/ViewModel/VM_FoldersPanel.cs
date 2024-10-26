@@ -33,14 +33,14 @@ namespace RepositoryExplorer.ViewModel {
                 if (dataContext.isTabActive && dataContext.FolderName != tab.FolderName) {
                     dataContext.isTabActive = false;
                     dataContext.UpdateData();
-                } 
+                }
             }
         }
 
         void UpdateFolderPannel(Folders dataFolders) {
             tabs.Clear();
-            foreach (var folder in dataFolders.foldersPaths) {
-                AddNewTab(folder.Split(@"\").Last());
+            foreach (var dataObj in dataFolders.savedData) {
+                AddNewTab(dataObj.FolderPath.Split(@"\").Last());
             }
             UpdateData();
         }

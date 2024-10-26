@@ -7,19 +7,47 @@ namespace RepositoryExplorer.Model {
 
         string path = Directory.GetCurrentDirectory() + @"\folders.json";
 
-        public void Save(List<string> folderPaths) {
-            string Json = JsonConvert.SerializeObject(folderPaths, Formatting.Indented);
+        public void Save(List<Data> folderData) {
+            string Json = JsonConvert.SerializeObject(folderData, Formatting.Indented);
+            if (!File.Exists(path)) { File.Create(path); }
             File.WriteAllText(path, Json);
         }
 
-        public List<string> LoadData() {
+        public List<Data> LoadDataObjects() {
             if (!File.Exists(path)) {
-                MessageBox.Show("Unable to load Data");
                 return null;
             }
             string Json = File.ReadAllText(path);
-            List<string> data = JsonConvert.DeserializeObject<List<string>>(Json);
+            List<Data> data = JsonConvert.DeserializeObject<List<Data>>(Json);
+            
+            if (data == null || data.Count() == 0) {
+                return null;
+            }
+            foreach (var item in data) {
+                if (!Directory.Exists(item.FolderPath)) {
+                    data.Remove(item);
+                    Save(data);
+                    LoadDataObjects();
+                    return data;
+                }
+            }
+
             return data;
+        }
+    }
+    public class Data {
+        public string FolderPath { get; set; }
+        public FolderPrefs FolderData { get; set; } = new();
+
+        public Data(string FolderPath, List<string> rescentFolders = null, List<string> favFolders = null) {
+            this.FolderPath = FolderPath;
+            FolderData.RescentFolders = rescentFolders;
+            FolderData.FavoriteFolders = favFolders;
+        }
+
+        public class FolderPrefs {
+            public List<string> RescentFolders { get; set; }
+            public List<string> FavoriteFolders { get; set; }
         }
     }
 }

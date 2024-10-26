@@ -20,7 +20,7 @@ namespace RepositoryExplorer.ViewModel {
         private string searchText;
         public string SearchText {
             get { return searchText; }
-            set { 
+            set {
                 searchText = value;
                 OnPropertyChanged();
                 FP_Folders.SetFilter(SearchText);

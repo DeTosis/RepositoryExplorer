@@ -52,7 +52,7 @@ namespace RepositoryExplorer.Model.SolutionParser {
                 }
             }
         }
-        
+
         string debug = "";
         string release = "";
         private void getDirPaths(string binPath) {

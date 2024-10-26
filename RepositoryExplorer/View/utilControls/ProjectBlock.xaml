@@ -12,7 +12,7 @@
         <data:VM_ProjectBlock/>
     </UserControl.DataContext>
 
-    <Border BorderBrush="#C4BBAF" BorderThickness="1" Margin="6" 
+    <Border BorderBrush="{Binding BorderBrush, UpdateSourceTrigger=PropertyChanged}" BorderThickness="1" Margin="6" 
             Height="{Binding Path=ActualWidth, RelativeSource={RelativeSource Self}}" Width="auto"
             HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid>

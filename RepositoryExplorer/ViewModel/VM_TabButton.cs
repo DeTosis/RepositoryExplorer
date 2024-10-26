@@ -42,9 +42,9 @@ namespace RepositoryExplorer.ViewModel {
 
         private void RemoveFolder() {
             Folders folders = new();
-            foreach (var folder in folders.foldersPaths) {
-                if (folderName == folder.Split(@"\").Last()) {
-                    folders.RemoveFolder(folder);
+            foreach (var folder in folders.savedData) {
+                if (folderName == folder.FolderPath.Split(@"\").Last()) {
+                    folders.RemoveFolder(folder.FolderPath);
                     break;
                 }
             }
