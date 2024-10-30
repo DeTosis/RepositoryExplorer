@@ -12,6 +12,12 @@
         <data:VM_ProjectBlock/>
     </UserControl.DataContext>
 
+    <UserControl.Resources>
+        <Style TargetType="MenuItem">
+            <Setter Property="Foreground" Value="{StaticResource cMenu_fg}"/>
+        </Style>
+    </UserControl.Resources>
+
     <Border BorderBrush="{Binding BorderBrush, UpdateSourceTrigger=PropertyChanged}" BorderThickness="1" Margin="6" 
             Height="{Binding Path=ActualWidth, RelativeSource={RelativeSource Self}}" Width="auto"
             HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
@@ -26,23 +32,32 @@
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
 
+            <Grid.ContextMenu>
+                <ContextMenu Style="{StaticResource cMenu}">
+                    <MenuItem Header="Open Project" Command="{Binding C_OpenSolution}"/>
+                    <MenuItem Header="Remove from resent" 
+                              Command="{Binding C_RemoveFromResent}" 
+                              IsEnabled="{Binding isresent, UpdateSourceTrigger=PropertyChanged}"/>
+                </ContextMenu>
+            </Grid.ContextMenu>
+            
             <Grid Grid.Row="1" Grid.ColumnSpan="2">
                 <Button 
-                    Style="{StaticResource ProjectButton}"
+                    Style="{StaticResource DeffaultButton}"
                     Content="{Binding FolderName, UpdateSourceTrigger=PropertyChanged}" Command="{Binding C_OpenFolder}"
-                    BorderBrush="Transparent" Background="Transparent"/>
+                    />
             </Grid>
         
             <Grid Grid.Row="2" Grid.Column="0" >
                 <Button 
-                    Style="{StaticResource ProjectButton}"
+                    Style="{StaticResource DeffaultButton}"
                     Command="{Binding C_OpenDebug}" IsEnabled="{Binding DebugExists, UpdateSourceTrigger=PropertyChanged}"
                     Content="Debug"/>
             </Grid>
 
             <Grid Grid.Row="2" Grid.Column="1">
                 <Button 
-                    Style="{StaticResource ProjectButton}"
+                    Style="{StaticResource DeffaultButton}"
                     Command="{Binding C_OpenRelease}" IsEnabled="{Binding ReleaseExists, UpdateSourceTrigger=PropertyChanged}"
                     Content="Release"/>
             </Grid>

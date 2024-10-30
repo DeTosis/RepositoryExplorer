@@ -39,14 +39,14 @@ namespace RepositoryExplorer.Model {
         public string FolderPath { get; set; }
         public FolderPrefs FolderData { get; set; } = new();
 
-        public Data(string FolderPath, List<string> rescentFolders = null, List<string> favFolders = null) {
+        public Data(string FolderPath, List<string> resentFolders = null, List<string> favFolders = null) {
             this.FolderPath = FolderPath;
-            FolderData.RescentFolders = rescentFolders;
+            FolderData.ResentFolders = resentFolders;
             FolderData.FavoriteFolders = favFolders;
         }
 
         public class FolderPrefs {
-            public List<string> RescentFolders { get; set; }
+            public List<string> ResentFolders { get; set; }
             public List<string> FavoriteFolders { get; set; }
         }
     }

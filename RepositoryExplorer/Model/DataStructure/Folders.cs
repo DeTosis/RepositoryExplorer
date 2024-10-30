@@ -19,30 +19,43 @@ namespace RepositoryExplorer.Model.DataStructure {
             }
 
             foreach (Data data in savedData) {
-                if (data.FolderData.RescentFolders == null) data.FolderData.RescentFolders = new();
+                if (data.FolderData.ResentFolders == null) data.FolderData.ResentFolders = new();
                 if (data.FolderData.FavoriteFolders == null) data.FolderData.FavoriteFolders = new();
             }
         }
 
-        public void AddRescent(string folderPath) {
+        public void AddResent(string folderPath) {
             foreach (Data data in savedData) {
                 if (data.FolderPath.ToLower() == FP_Folders.activeFolderPath.ToLower()) {
-                    if (data.FolderData.RescentFolders == null) {
-                        data.FolderData.RescentFolders = new();
+                    if (data.FolderData.ResentFolders == null) {
+                        data.FolderData.ResentFolders = new();
                     }
-                    if (data.FolderData.RescentFolders.Contains(folderPath)) return;
+                    if (data.FolderData.ResentFolders.Contains(folderPath)) return;
 
-                    data.FolderData.RescentFolders.Add(folderPath);
+                    data.FolderData.ResentFolders.Add(folderPath);
                     new SaveLoadSystem().Save(savedData);
                     FolderActionNotification.RefreshFoldersEvent();
                 }
             }
         }
 
-        public bool CheckRescent(string folderPath) {
+        public void RemoveResent(string folderPath) {
+            foreach (Data data in savedData) {
+                if (data.FolderPath.ToLower() == FP_Folders.activeFolderPath) {
+                    if (data.FolderData.ResentFolders.Contains(folderPath)) {
+                        data.FolderData.ResentFolders.Remove(folderPath);
+                        SaveData();
+                        FolderActionNotification.RefreshFoldersEvent();
+                        return;
+                    }
+                }
+            }
+        }
+
+        public bool CheckResent(string folderPath) {
             foreach (Data data in savedData) {
                 if (data.FolderPath.ToLower() != FP_Folders.activeFolderPath.ToLower()) continue;
-                if (data.FolderData.RescentFolders.Contains(folderPath)) return true;
+                if (data.FolderData.ResentFolders.Contains(folderPath)) return true;
             }
             return false;
         }
@@ -50,7 +63,10 @@ namespace RepositoryExplorer.Model.DataStructure {
         //*** ***
         public void AddFolder(string folderPath) {
             if (!Directory.Exists(folderPath)) return;
-            if (!new ValidateFolder().Validate(folderPath)) return;
+            if (!new ValidateFolder().Validate(folderPath)) {
+                MessageBox.Show("Enter path to repos folder, ex:"+"\n"+@"'C:\Users\user\source\repos'");
+                return; 
+            }
             foreach (var dataObj in savedData) { if (dataObj.FolderPath.ToLower() == folderPath.ToLower()) return; }
 
             savedData.Add(new Data(folderPath));

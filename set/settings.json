@@ -1,0 +1,186 @@
+[
+  [
+    {
+      "keyName": "Window.Bg",
+      "keyValue": "#FF26252A"
+    }
+  ],
+  [
+    {
+      "keyName": "Header.Bg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Header.Fg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Header.Btn.Active.Bg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Header.Btn.Active.Fg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Header.Btn.Active.Border",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Header.Btn.Inactive.Bg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Header.Btn.Inactive.Fg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Header.Btn.Inactive.Border",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Header.Btn.Hig.Border",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Header.Btn.Hig.Bg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Header.Btn.Pressed.Border",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Header.Btn.Pressed.Bg",
+      "keyValue": "#00000000"
+    }
+  ],
+  [
+    {
+      "keyName": "TabP.Btn.Active.Bg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "TabP.Btn.Active.Fg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "TabP.Btn.Active.Border",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "TabP.Btn.Inactive.Bg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "TabP.Btn.Inactive.Fg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "TabP.Btn.Inactive.Border",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "TabP.Btn.Hig.Border",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "TabP.Btn.Hig.Bg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "TabP.Btn.Pressed.Border",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "TabP.Btn.Pressed.Bg",
+      "keyValue": "#00000000"
+    }
+  ],
+  [
+    {
+      "keyName": "Footer.Bg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Footer.F_Opt.Btn.Active.Bg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Footer.F_Opt.Btn.Active.Fg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Footer.F_Opt.Btn.Active.Border",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Footer.F_Opt.Btn.Inactive.Bg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Footer.F_Opt.Btn.Inactive.Fg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Footer.F_Opt.Btn.Inactive.Border",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Footer.F_Opt.Btn.Hig.Border",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Footer.F_Opt.Btn.Hig.Bg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Footer.F_Opt.Btn.Pressed.Border",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Footer.F_Opt.Btn.Pressed.Bg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Footer.F_extBtn.Btn.Active.Bg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Footer.F_extBtn.Btn.Active.Fg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Footer.F_extBtn.Btn.Active.Border",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Footer.F_extBtn.Btn.Inactive.Bg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Footer.F_extBtn.Btn.Inactive.Fg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Footer.F_extBtn.Btn.Inactive.Border",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Footer.F_extBtn.Btn.Hig.Border",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Footer.F_extBtn.Btn.Hig.Bg",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Footer.F_extBtn.Btn.Pressed.Border",
+      "keyValue": "#00000000"
+    },
+    {
+      "keyName": "Footer.F_extBtn.Btn.Pressed.Bg",
+      "keyValue": "#00000000"
+    }
+  ]
+]

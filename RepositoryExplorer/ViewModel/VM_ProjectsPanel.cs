@@ -30,7 +30,7 @@ namespace RepositoryExplorer.ViewModel {
 
         void Refresh(object? sender, EventArgs e) {
             Projects.Clear();
-            rescentList.Clear();
+            resentList.Clear();
             SetupTabs();
         }
 
@@ -39,7 +39,7 @@ namespace RepositoryExplorer.ViewModel {
             if (folderPath == null) return;
 
             Projects.Clear();
-            rescentList.Clear();
+            resentList.Clear();
 
             List<DataUnit> dataUnits = new ProjectSolutionParser(folderPath).GetAllSolutions();
             if (!string.IsNullOrEmpty(FP_Folders.filter)) {
@@ -52,28 +52,29 @@ namespace RepositoryExplorer.ViewModel {
                 AddNewFolder(dataUnits[i]);
             }
 
-            for (int i = 0; i < rescentList.Count(); i++) {
-                Projects.Insert(i, rescentList[i]);
+            for (int i = 0; i < resentList.Count(); i++) {
+                Projects.Insert(i, resentList[i]);
             }
 
             UpdateData();
         }
 
 
-        List<ProjectBlock> rescentList = new();
+        List<ProjectBlock> resentList = new();
         private void AddNewFolder(DataUnit data) {
             ProjectBlock pb = new ProjectBlock();
             VM_ProjectBlock dataContext = pb.DataContext as VM_ProjectBlock;
 
-            dataContext.isRescent = new Folders().CheckRescent(data.fldrPath);
+            dataContext.isresent = new Folders().CheckResent(data.fldrPath);
             dataContext.FolderName = data.fldrName;
             dataContext.FolderPath = data.fldrPath;
             dataContext.ReleasePath = data.releaseFldrPath;
             dataContext.DebugPath = data.debugFldrPath;
+            dataContext.SolutionPath = data.slnPath;
             dataContext.INIT();
 
-            if (dataContext.isRescent) {
-                rescentList.Add(pb);
+            if (dataContext.isresent) {
+                resentList.Add(pb);
             } else {
                 Projects.Add(pb);
             }

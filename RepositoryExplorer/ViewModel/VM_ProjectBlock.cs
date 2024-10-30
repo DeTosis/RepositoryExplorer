@@ -1,5 +1,7 @@
-﻿using System.Windows.Media;
+﻿using System.Diagnostics;
+using System.Windows.Media;
 using RepositoryExplorer.Model;
+using RepositoryExplorer.Model.ColorSettings;
 using RepositoryExplorer.Model.DataStructure;
 using RepositoryExplorer.utils;
 
@@ -12,7 +14,9 @@ namespace RepositoryExplorer.ViewModel {
         public bool DebugExists { get; set; }
         public bool ReleaseExists { get; set; }
 
-        public bool isRescent { get; set; }
+        public string SolutionPath { get; set; }
+
+        public bool isresent { get; set; }
         private void UpdateData() {
             OnPropertyChanged("FolderName");
             OnPropertyChanged("FolderPath");
@@ -20,9 +24,10 @@ namespace RepositoryExplorer.ViewModel {
             OnPropertyChanged("ReleasePath");
             OnPropertyChanged("DebugExists");
             OnPropertyChanged("ReleaseExists");
+            OnPropertyChanged("isresent");
         }
 
-        private SolidColorBrush borderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#C4BBAF");
+        private SolidColorBrush borderBrush = new ColorBrushFromText().getBrush("#C4BBAF");
         public SolidColorBrush BorderBrush {
             get { return borderBrush; }
             set {
@@ -30,10 +35,8 @@ namespace RepositoryExplorer.ViewModel {
                 OnPropertyChanged();
             }
         }
-
-
         public void INIT() {
-            if (isRescent) BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFromString("#496F5D");
+            if (isresent) BorderBrush = new ColorBrushFromText().getBrush("#496F5D");
             DebugExists = !string.IsNullOrEmpty(DebugPath);
             ReleaseExists = !string.IsNullOrEmpty(ReleasePath);
             UpdateData();
@@ -42,25 +45,40 @@ namespace RepositoryExplorer.ViewModel {
         public RelayCommand C_OpenFolder => new RelayCommand(execute => OpenFolder());
         public RelayCommand C_OpenDebug => new RelayCommand(execute => OpenDebug());
         public RelayCommand C_OpenRelease => new RelayCommand(execute => OpenRelease());
+        public RelayCommand C_OpenSolution => new RelayCommand(execute => OpenSolution());
+        public RelayCommand C_RemoveFromResent => new RelayCommand(execute => RemoveFromResent());
+
 
         private OpenDesiredFolder open = new();
         private void OpenFolder() {
             open.OpenFolder(FolderPath);
-            AddFolderToRescent();
+            AddFolderToResent();
         }
 
         private void OpenDebug() {
             open.OpenFolder(DebugPath);
-            AddFolderToRescent();
+            AddFolderToResent();
         }
 
         private void OpenRelease() {
             open.OpenFolder(ReleasePath);
-            AddFolderToRescent();
+            AddFolderToResent();
         }
 
-        private void AddFolderToRescent() {
-            new Folders().AddRescent(FolderPath);
+        void OpenSolution() {
+            Process p = new Process();
+            p.StartInfo.FileName = "cmd.exe";
+            p.StartInfo.Arguments = $"/C start {SolutionPath}";
+            p.Start();
+            AddFolderToResent();
+        }
+
+        void RemoveFromResent() {
+            new Folders().RemoveResent(FolderPath);
+        }
+
+        private void AddFolderToResent() {
+            new Folders().AddResent(FolderPath);
         }
     }
 }

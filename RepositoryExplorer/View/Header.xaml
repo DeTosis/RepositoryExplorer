@@ -11,7 +11,7 @@
         <data:VM_Header/>
     </UserControl.DataContext>
 
-    <Border Background="#131316">
+    <Border Background="{DynamicResource Header.Bg}">
         <Grid>
 
             <Grid.ColumnDefinitions>
@@ -21,6 +21,7 @@
             </Grid.ColumnDefinitions>
             
             <Label
+                Foreground="{DynamicResource Header.Fg}"
                 Grid.Column="0"
                 FontSize="16"
                 HorizontalAlignment="Left"
@@ -34,7 +35,7 @@
                 VerticalContentAlignment="Center"
                 FontSize="16"
                 Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged, NotifyOnSourceUpdated=True}"
-                Foreground="#C4BBAF"
+                Foreground="{DynamicResource Header.Fg}"
                 Background="Transparent"
                 BorderBrush="Transparent"
                 Grid.Column="1"
@@ -49,10 +50,8 @@
 
             <Button
                 Grid.Column="2"
-                Style="{StaticResource DeffaultButton}"
+                Style="{DynamicResource HeaderButton}"
                 Command="{Binding CloseApp}"
-                Background="Transparent"
-                Foreground="#AD3A72"
                 Content="✕"
                 Margin="6"
                 Width="20"

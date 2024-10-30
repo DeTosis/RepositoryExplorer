@@ -10,37 +10,11 @@
         FontFamily="/res/fonts/#Feature Mono Regular"
         AllowsTransparency="True"
         ResizeMode="NoResize"
-        Background="#26252A"
+        Background="{DynamicResource Window.Bg}"
         WindowStartupLocation="CenterScreen"
         Title="Repository Explorer"
         Height="675" Width="1200">
 
-
-    <Window.Resources>
-
-        <SolidColorBrush x:Key="controlBorder" Color="#AD3A72"/>
-        <SolidColorBrush x:Key="controlFG" Color="#C4BBAF"/>
-        <SolidColorBrush x:Key="controlBG" Color="#131316"/>
-
-        <Style TargetType="Label">
-            <Setter Property="Foreground" Value="{StaticResource controlFG}"/>
-        </Style>
-
-        <Style TargetType="Button">
-            <Setter Property="Foreground" Value="{StaticResource controlFG}"/>
-            <Setter Property="Background" Value="{StaticResource controlBG}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource controlBorder}"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>
-
-        <Style TargetType="ListViewItem">
-            <Setter Property="Foreground" Value="{StaticResource controlFG}"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="5"/>
-        </Style>
-    </Window.Resources>
-    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="5*" x:Name="Header" />
@@ -66,7 +40,7 @@
             Grid.Column="0" 
             ShowsPreview="False" Width="3" 
             HorizontalAlignment="Right" VerticalAlignment="Stretch"
-            Background="#131316"
+            Background="{DynamicResource Header.Bg}"
             />
 
         <Grid x:Name="Content"

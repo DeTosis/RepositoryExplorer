@@ -12,32 +12,12 @@
     <UserControl.DataContext>
         <data:VM_TabButton/>
     </UserControl.DataContext>
-
-    <UserControl.Resources>
-        <Style TargetType="MenuItem" >
-            <Setter Property="FontFamily" Value="/res/fonts/#Feature Mono Regular"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type MenuItem}">
-                        <Border x:Name="Border">
-                            <Grid>
-                                <ContentPresenter Margin="6,3,6,3" ContentSource="Header" RecognizesAccessKey="True" />
-                                <Popup x:Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsSubmenuOpen}" AllowsTransparency="True" Focusable="False" PopupAnimation="Fade">
-                                </Popup>
-                            </Grid>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        
-    </UserControl.Resources>
     
     <Grid>
         <Button 
-            Style="{StaticResource DeffaultButton}"
+            OverridesDefaultStyle="True"
+            Style="{DynamicResource TabButton}"
             Margin="8,4,0,0"
-            BorderBrush="#131316"
             BorderThickness="2"
             Background="{Binding currentBg, UpdateSourceTrigger=PropertyChanged}"
             Content="{Binding FolderName}"
@@ -45,9 +25,10 @@
             Command="{Binding C_TabButtonClick}">
 
             <Button.ContextMenu>
-                <ContextMenu>
+                <ContextMenu Style="{StaticResource cMenu}">
                     <MenuItem 
-                        Background="#131316"
+                        Background="Transparent"
+                        Foreground="{StaticResource cMenu_fg}"
                         Header="Remove Folder" Command="{Binding C_RemoveFolder}"/>
                 </ContextMenu>
             </Button.ContextMenu>

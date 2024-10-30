@@ -1,4 +1,7 @@
 ﻿using System.IO;
+using System.Security.Permissions;
+using System.Security;
+using System.Windows;
 
 namespace RepositoryExplorer.Model.SolutionParser {
     public class ProjectSolutionParser {
@@ -33,16 +36,18 @@ namespace RepositoryExplorer.Model.SolutionParser {
         }
 
         private void Query(string path) {
-            foreach (var i in Directory.GetFiles(path)) {
-                if (i.EndsWith(".sln")) {
-                    string fldrPath = path;
-                    string fldrname = path.Split(@"\")[basePathLen];
-                    string slnPath = i;
+            try {
+                foreach (var i in Directory.GetFiles(path)) {
+                    if (i.EndsWith(".sln")) {
+                        string fldrPath = path;
+                        string fldrname = path.Split(@"\")[basePathLen];
+                        string slnPath = i;
 
-                    GetDebugReleaseFldrs(path);
-                    dataUnits.Add(new DataUnit(fldrname, fldrPath, slnPath, debug, release));
+                        GetDebugReleaseFldrs(path);
+                        dataUnits.Add(new DataUnit(fldrname, fldrPath, slnPath, debug, release));
+                    }
                 }
-            }
+            } catch { }
         }
 
         private void GetDebugReleaseFldrs(string pPath) {

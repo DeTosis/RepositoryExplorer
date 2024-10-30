@@ -59,7 +59,7 @@
         </Grid>
 
         <Grid Grid.Row="3" Grid.Column="0">
-            <Button Style="{StaticResource ProjectButton}"
+            <Button Style="{StaticResource DeffaultButton}"
                     Command="{Binding C_Submit}"
                     Content="Submit"
                     Height="30"
@@ -69,7 +69,7 @@
         </Grid>
         
         <Grid Grid.Row="3" Grid.Column="2">
-            <Button Style="{StaticResource ProjectButton}"
+            <Button Style="{StaticResource DeffaultButton}"
                     Command="{Binding C_Cancel}"
                     Content="Cancel"
                     Height="30"
