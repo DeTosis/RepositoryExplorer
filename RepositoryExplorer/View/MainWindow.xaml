@@ -13,7 +13,7 @@
         Background="{DynamicResource Window.Bg}"
         WindowStartupLocation="CenterScreen"
         Title="Repository Explorer"
-        Height="675" Width="1200">
+        Height="675" Width="1200" Icon="/res/ico/reLogo.ico">
 
     <Grid>
         <Grid.RowDefinitions>
